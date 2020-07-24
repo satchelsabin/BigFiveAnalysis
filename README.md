@@ -52,7 +52,7 @@ Ok that seems much more manageable. There still are more US responses but atleas
 
 Now lets look at the average response to each question in total and see if theres anything strange about any particular question.
 
-![Total Average Response(/Images/TotalCorr.png)
+![Total Average Response](/Images/TotalCorr.png)
 
 That seems interesting, it makes sense that in general people will respond more favorably and rate themselves higher, but there are distinct low average outliers. Looking at the values we see that the outliers tend to share a similarity in how they were presented. Each one is presented as a negative, such as question
 
