@@ -46,10 +46,11 @@ def country_trait(df,country):
             country=string
        Output:
             radius= (float) respective size of that point in the datafram'''
-    country_valuelist=[]
+    
     traitlist=['EXT','EST','OPN','AGR','CSN']
-    for i in range(len(traitlist):
-            df.f'
+    tempdf=df[df['country']==country]
+    country_valuelist=filtered_heatmaplst(tempdf,traitlist)
+            
     
     return country_valuelist
 
@@ -58,21 +59,27 @@ def heatmap_lst(df,trait_lst):
     for i in trait_lst:
         mean_lst_row=[]
         for j in range(1,11):
-            mean_lst_row.append(maindf[f'{i}{j}'].mean())
+            mean_lst_row.append(df[f'{i}{j}'].mean())
         mean_lst.append(mean_lst_row)
     return mean_lst
                    
-def new_heatmap_lst(df,trait_lst):
+def filtered_heatmap_lst(df,trait_lst):
     mean_lst=[]
     for i in trait_lst:
         mean_lst_row=[]
         for j in range(1,11):
-            x=maindf[f'{i}{j}'].mean()
+            x=df[f'{i}{j}'].mean()
             if x<2.25:
                 x=6-x
             mean_lst_row.append(x)
         mean_lst.append(mean_lst_row)
     return mean_lst
+              
+def list_amal(list1,list2):
+    x=np.array(list1)
+    y=np.array(list2)
+    final=x-y
+    return final.tolist()
 
 def make_fol_map(lcd,maindf):
     Map = folium.Map(location=[0,0], zoom_start = 2)

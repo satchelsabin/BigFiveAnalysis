@@ -8,11 +8,13 @@ The Big Five, or OCEAN, model uses five major personality descriptors, or traits
 #### Openness
 People high in this trait show a curiosity towards the world around them and a desire to experience new things. Generally people with a high openness score enjoy abstract ideas, in addition to having unique insights into the world.
 >OPN2	I have difficulty understanding abstract ideas.
+
 >OPN3	I have a vivid imagination.
 
 #### Conscientiousness
 People high in this trait have are prone to plan things out and pay attention to detail. They plan ahead, are mindful of deadlines, and how their behavior effects people.
 >CSN4	I make a mess of things.
+
 >CSN5	I get chores done right away.
 
 #### Extraversion
