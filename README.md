@@ -46,6 +46,9 @@ Looking over the colums I decided that I wanted to find if there was a differenc
 
 Well, huh, that seems a bit skewed in the US's favor. This is only showing the top 20 and it's already barely visible. Let's make this eaiser and just look at US responses vs Other Responses.
 
+![Map](/Images/Map.png)
+Here is a map made in folium describing the datapoints from around the world. Each circle represents a country that has more than 1000 respondants to the test.
+
 ![US vs Other Responses](/Images/SplitResponse.png)
 
 Ok that seems much more manageable. There still are more US responses but atleast they are approaching the same size.
@@ -71,6 +74,16 @@ Great, now that the data is more clean we can filter these into two seperate gro
 ![US Average Response](/Images/USCorr.png)
 Here is the US average response to each question.
 
-![Other Average Response](/Images/NotUSCorr.png)
+![Other Average Response](/Images/NotUSCor.png)
 Simillarly here is the Other average response to each question. It appears that we can't really tell much of a difference between the two just based on the scale of these graphs alone. Instead lets see what the difference in averages are between the two of them. Maybe that will show more distinctly if there are any outliers in this group.
+
+
+![Difference](/Images/MeanCorr.png)
+So there appears to be a major difference between the means at CSN8. Lets see what that is,
+// CSN8: I shirk my duties.
+Ok so it appears that there is a difference between the means of these two samples. Lets do a hypothesis test on these values. I'll assume that they are both normally distributed,for ease. Now lets let our null hypothesis be that there is no statistically significant difference between the samples, with an alpha value of 0.05. Appling a t-test to the distributions, we can see that with a p value of 1.5*10**-21, there is a statistical signaficance between the two means, allowing us to reject the null hypothesis.
+
+
+
+
 
