@@ -20,18 +20,28 @@ People high in this trait have are prone to plan things out and pay attention to
 #### Extraversion
 This trait deals with the sociability of people. People who are more outgoing, i.e. extroverted, score higher.
 >EXT6	I have little to say.
+
 >EXT7	I talk to a lot of different people at parties.
 
 #### Agreeableness 
 People who are more show trusting, altruistic, and kind gestures tend to score higher in this trait.
 >AGR5	I am not interested in other people's problems.
+
 >AGR6	I have a soft heart.
 
 #### Neuroticism
 This trait deals with moodiness,and emotional instability. People prone to mood swings, anxious, or depressive thoughts tend to score high in this trait.
 >EST1	I get stressed out easily.
+
 >EST2	I am relaxed most of the time.
 
 ## The Data
 The data was collected from over a million responses over a two year period. Users were prompted with 50 questions total, with subgroups of 10 corresponding to their respective traits. Users would rate from 1-5 how close the prompt matches their percieved personality. In addition users were timed in how long their answers took in milliseconds, and which country they said they live in.
+
+So to start out investigating this dataset I initially booted up a spark notebook, but quickly found that it was entirely unneeded, and really only hindered my progress. Thus I then loaded the csv into pandas and looked at what I was dealing with. 
+
+Looking over the colums I decided that I wanted to find if there was a difference in responces based on where a user reportedly came from. Thus I had to examine the count of users from the various countries.
+
+![Total Responses](/images/TotalResp.png)
+
 
