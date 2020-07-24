@@ -44,4 +44,18 @@ Looking over the colums I decided that I wanted to find if there was a differenc
 
 ![Total Responses](/Images/TotalResp.png)
 
+Well, huh, that seems a bit skewed in the US's favor. This is only showing the top 20 and it's already barely visible. Let's make this eaiser and just look at US responses vs Other Responses.
+
+![US vs Other Responses](/Images/SplitResponse.png)
+
+Ok that seems much more manageable. There still are more US responses but atleast they are approaching the same size.
+
+Now lets look at the average response to each question in total and see if theres anything strange about any particular question.
+
+![Total Average Response(/Images/TotalCorr.png)
+
+That seems interesting, it makes sense that in general people will respond more favorably and rate themselves higher, but there are distinct low average outliers. Looking at the values we see that the outliers tend to share a similarity in how they were presented. Each one is presented as a negative, such as question
+
+
+
 
