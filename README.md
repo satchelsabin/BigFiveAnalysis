@@ -56,6 +56,6 @@ Now lets look at the average response to each question in total and see if there
 
 That seems interesting, it makes sense that in general people will respond more favorably and rate themselves higher, but there are distinct low average outliers. Looking at the values we see that the outliers tend to share a similarity in how they were presented. Each one is presented as a negative, such as question
 
+![US Average Response](/Images/USCorr.png)
 
-
-
+![Other Average Response](/Images/NotUSCorr.png)
