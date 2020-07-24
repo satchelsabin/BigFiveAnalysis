@@ -53,7 +53,28 @@ def country_trait(df,country):
     
     return country_valuelist
 
-def make_map(lcd,maindf):
+def heatmap_lst(df,trait_lst):
+    mean_lst=[]
+    for i in trait_lst:
+        mean_lst_row=[]
+        for j in range(1,11):
+            mean_lst_row.append(maindf[f'{i}{j}'].mean())
+        mean_lst.append(mean_lst_row)
+    return mean_lst
+                   
+def new_heatmap_lst(df,trait_lst):
+    mean_lst=[]
+    for i in trait_lst:
+        mean_lst_row=[]
+        for j in range(1,11):
+            x=maindf[f'{i}{j}'].mean()
+            if x<2.25:
+                x=6-x
+            mean_lst_row.append(x)
+        mean_lst.append(mean_lst_row)
+    return mean_lst
+
+def make_fol_map(lcd,maindf):
     Map = folium.Map(location=[0,0], zoom_start = 2)
     for i in range(df1.shape[0]):
         try:
