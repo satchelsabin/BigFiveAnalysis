@@ -1,63 +1,79 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-import pyspark as ps
-spark = (ps.sql.SparkSession.builder 
-        .master("local[4]") 
-        .appName("sparkSQL exercise") 
-        .getOrCreate()
-        )
-sc = spark.sparkContext
+import matplotlib.pyplot as plt
+import folium
 
-df = spark.read.csv("work/Data/IPIP-FFM-data-8Nov2018/data-final.csv")
 
-dfmain = spark.read.csv('../IPIP-FFM-data-8Nov2018/data-final.csv',
-                    header=True,       # use headers or not
-                    quote='"',         # char for quotes
-                    sep="\t",           # char for separation
-                    inferSchema=True)  # do we infer
 
-def database_maker(df,string,mode='traits'):
-    #Creates database based off of string+digit, correspondes to 10 questions per
-    #Inputs: df=database (specifially 5traitsdb) string=three letter string of database titles, mode=['traits','time','other']
-    if mode=='traits':
+def make_df(df,string, mode='base'):
+    if mode=='base':
         lst=[f'{string}{i}' for i in range(1,11)]
-        return df[[lst]]
-    elif mode=='time':
+    if mode=='time':
         lst=[f'{string}{i}_E' for i in range(1,11)]
-        return df[[lst]]
-    elif mode=='other':
-        lst=['dateload','screenw','screenh','introelapse','testelapse','endelapse','IPC','country','lat_appx_lots_of_err','long_appx_lots_of_err']
-        return df[[lst]]
-traits=['EXT','EST','AGR','CSN','OPN']
-#Extraversion, ?Neuroticisim?, Agreeableness,Conseention, Openness]
+    return df[lst]
+
+def make_mean(df,lst,mode='base'):
+    '''Creates a mean based on a users total responses to each unique trait.
+        Outputs means as new columns in original database
+        Input-
+            df = dataframe, lst = list of names of traits (3 letters), mode = ['base','time']
+        Output-
+            df with new mean column'''
     
-#Create Five Traits Databases
-dfEXT=database_maker(dfmain,traits[0])
-dfEST=database_maker(dfmain,traits[1])
-dfAGR=database_maker(dfmain,traits[2])
-dfCSN=database_maker(dfmain,traits[3])
-dfOPN=database_maker(dfmain,traits[4])
-#Create Five Times Databases
-dfEXTT=database_maker(dfmain,traits[0],'time')
-dfESTT=database_maker(dfmain,traits[1],'time')
-dfAGRT=database_maker(dfmain,traits[2],'time')
-dfCSNT=database_maker(dfmain,traits[3],'time')
-dfOPNT=database_maker(dfmain,traits[4],'time')
-#Create Other Database
-dfOther=database_maker(dfmain,traits[4],'other')
-  
+    for i in lst:    
+        dfv=make_df(df,i,mode)            
+        if mode =='base':
+            df[f'Mean_{i}']=dfv.mean(axis=1)
+        if mode =='time':
+            df[f'Mean_{i}E']=dfv.mean(axis=1)    
+    return df
 
+def radius_function(df,country):
+    '''Takes ratio of total responses from the survey and normalizes them to the total amount of responses
+        Input:
+            df=Main dataframe
+            country=string
+        Output:
+            radius= (float) respective size of that point in the datafram'''
+    radius=(df['country'].value_counts()[f'{country}']/df.shape[0])*100+5
+    return radius
 
-#Making Pandas Dataframes
-pdAGR=dfAGR.toPandas()
-pdEXT=dfEXT.toPandas()
-pdEST=dfEST.toPandas()
-pdCSN=dfCSN.toPandas()
-pdOPN=dfOPN.toPandas()
+def country_trait(df,country):
+    '''Takes ratio of total responses from the survey and normalizes them to the total amount of responses
+       Input:
+            df=Main dataframe
+            country=string
+       Output:
+            radius= (float) respective size of that point in the datafram'''
+    country_valuelist=[]
+    traitlist=['EXT','EST','OPN','AGR','CSN']
+    for i in range(len(traitlist):
+            df.f'
+    
+    return country_valuelist
 
-pdAGRT=dfAGRT.toPandas()
-pdEXTT=dfEXTT.toPandas()
-pdESTT=dfESTT.toPandas()
-pdCSNT=dfCSNT.toPandas()
-pdOPNT=dfOPNT.toPandas()
+def make_map(lcd,maindf):
+    Map = folium.Map(location=[0,0], zoom_start = 2)
+    for i in range(df1.shape[0]):
+        try:
+            country=lcd.country[i]
+            counts=maindf['country'].value_counts()[f'{country}']
+            if counts<1000:
+                continue
+            y= lcd['longitude'][i]
+            x= lcd['latitude'][i]
+            (folium.CircleMarker((x, y),
+             popup=f'Country: {lcd.name[i]}\nResponses: {counts}\nEstimated Major Trait:{}',
+             radius=radius_function(maindf,country)).add_to(Map)
+            )
+        except KeyError:
+            continue
+    return Map
+
+                   
+if __name__=='__main__':                   
+maindf=pd.read_csv('../Data/IPIP-FFM-data-8Nov2018/data-final.csv',sep='\t')
+littlecountrydata=pd.read_csv('../Data/datasets_2312_3908_countries.csv')
+traits=['EXT','EST','AGR','CSN','OPN']
+
