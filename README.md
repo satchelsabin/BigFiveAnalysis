@@ -42,6 +42,6 @@ So to start out investigating this dataset I initially booted up a spark noteboo
 
 Looking over the colums I decided that I wanted to find if there was a difference in responces based on where a user reportedly came from. Thus I had to examine the count of users from the various countries.
 
-![Total Responses](/images/TotalResp.png)
+![Total Responses](/Images/TotalResp.png)
 
 
