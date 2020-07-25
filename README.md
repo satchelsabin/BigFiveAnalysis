@@ -80,7 +80,9 @@ Simillarly here is the Other average response to each question. It appears that 
 
 ![Difference](/Images/MeanCorr.png)
 So there appears to be a major difference between the means at CSN8. Lets see what that is,
+
 >> CSN8: I shirk my duties.
+
 Ok so it appears that there is a difference between the means of these two samples. Lets do a hypothesis test on these values. I'll assume that they are both normally distributed,for ease. Now lets let our null hypothesis be that there is no statistically significant difference between the samples, with an alpha value of 0.05. Appling a t-test to the distributions, we can see that with a p value of 1.5*10**-21, there is a statistical signaficance between the two means, allowing us to reject the null hypothesis.
 
 
